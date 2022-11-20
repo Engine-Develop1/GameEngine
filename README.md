@@ -10,12 +10,16 @@ the engine is based on a few things dose are
 3. and an database
 
 ```
-public class Settings
-{
-  //holds many types of information take a look in the ![GeneralSystems.cs](GeneralSystems.cs)
-}
+public class Settings [...]
 public class GeneralSystems
+{
+//the start function is responsible for the main menu and settings
 void start() [...]
+//the update function is responsible for taking user input 
 void update() [...]
+}
 ```
+
+the settings class holds many types of information take a look in the ![GeneralSystems.cs](Code/GeneralSystems.cs)
+
 > test
