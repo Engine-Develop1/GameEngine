@@ -23,3 +23,28 @@ void update() [...]
 the settings class holds many types of information take a look in the ![GeneralSystems.cs](Code/GeneralSystems.cs)
 
 > test
+
+## how to use the engine
+
+the engine starts with the ![GeneralSystems.cs](Code/GeneralSystems.cs) file where there is a function for starting it
+```
+void Start()
+...
+```
+1. Make a new file in your project
+```
+using GameEngine;
+public class ClassName : GeneralSystems
+{
+  public static void Main()
+  {
+     ClassName Classname = new ClassName();
+     Classname.Start();
+  }
+  public void Start()
+  {
+    start();
+  }
+  //and the same with the update function
+}
+```
