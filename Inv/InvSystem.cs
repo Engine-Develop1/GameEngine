@@ -13,6 +13,32 @@ namespace GameEngine.Inv
         public ItemData[] ItemsInv = new ItemData[InvSpace];
         public int[] ConInv = new int[InvSpace];
         public int InvIndex;
+        public ItemData[] EquipedItems = new ItemData[8];
+        public string GetArmorData()
+        {
+            return CodeQ.ForLoopData(EquipedItems, 5, true);
+        }
+        public string GetEquipedData()
+        {
+            return "you have " + GetArmorData() + "on";
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="slot">
+        /// the slot is for what Equipment slot you will put it in
+        /// </param>
+        public void EquipItem(ItemData item, int slot)
+        {
+            if (item.ArmorItems != EquipedItems[slot].ArmorItems)
+            {
+                EquipedItems[slot] = item;
+                //take the item from inv
+            }
+            else
+                NpcDialog.Dialog_DataBase.NpcsDiaLog("System", ':', "you have that item equip");
+        }
         public int FindItemIndexInInv(ItemsEnum item)
         {
             int index = 0;
@@ -49,7 +75,7 @@ namespace GameEngine.Inv
                 }
             }
         }
-        public void GiveItemToInv(ItemData itemData,int con)
+        public void AddItemToInv(ItemData itemData,int con)
         {
             for (int i = 0; i < InvSpace; i++)
             {

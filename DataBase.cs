@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Linq;
-namespace GameEngine.settings
-{
-    class Settings
-    {
-        public static bool PrivateSet = false;
-        public static bool dev = false;
-    }
-}
+using System.Globalization;
+using GameEngine;
 namespace GameEngine.DataBase
 {
     class Store
@@ -38,7 +32,7 @@ namespace GameEngine.DataBase
             index = new int[Length];
         }
 
-        private static bool Dev => settings.Settings.dev;
+        private static bool Dev => Settings.dev;
         void WriteData(int DataRow, string name, object val)
         {
             stores[DataRow - 1].NameDataBase[index[DataRow - 1]] = name;
@@ -57,7 +51,7 @@ namespace GameEngine.DataBase
         public void SetValue(int DataRow, string name, object val)
         {
             object vis;
-            if (settings.Settings.PrivateSet == true)
+            if (Settings.PrivateSet == true)
                 vis = "#*******XD*#";
             else
                 vis = val;
@@ -77,7 +71,7 @@ namespace GameEngine.DataBase
             object vis;
             for (int i = 0; i < longstring.Length; i++)
             {
-                if (settings.Settings.PrivateSet == true)
+                if (Settings.PrivateSet == true)
                     vis = "#*******XD*#";
                 else
                     vis = longstring[i];
