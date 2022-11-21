@@ -19,7 +19,7 @@ namespace GameEngine.items
     }
     public struct Items
     {
-        public static ItemData Stick()
+        public static ItemData GetStick()
         {
             ItemData itemData = new()
             {
@@ -30,7 +30,7 @@ namespace GameEngine.items
             };
             return itemData;
         }
-        public static ItemData Stone()
+        public static ItemData GetStone()
         {
             ItemData itemData = new()
             {
@@ -64,11 +64,6 @@ namespace GameEngine.items
             };
             return itemData;
         }
-
-        /// <summary>
-        /// this function to get the item data of coal
-        /// </summary>
-        /// <returns>the item data of coal</returns>
         public static ItemData Getcoal()
         {
             ItemData itemData = new()

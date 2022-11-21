@@ -31,7 +31,6 @@ namespace GameEngine.DataBase
             }
             index = new int[Length];
         }
-
         private static bool Dev => Settings.dev;
         void WriteData(int DataRow, string name, object val)
         {

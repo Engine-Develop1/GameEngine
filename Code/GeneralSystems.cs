@@ -8,7 +8,7 @@ using GameEngine.NpcDialog;
 
 namespace GameEngine
 {
-    public class Settings
+    public class Settings : GeneralSystems
     {
         public static int VolMusik;
         public static int VolSound;
@@ -20,52 +20,59 @@ namespace GameEngine
         public static bool dev = false;
         public static bool IsMetric = RegionInfo.CurrentRegion.IsMetric;
         public static DayOfWeek FirstDayOfWeek = DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek;
+        public override void start(string test)
+        {
+            base.start(test);
+        }
+        public override void update()
+        {
+            base.update();
+        }
     }
     public class GeneralSystems
     {
         readonly string[] settingCom = { "set", "Set", "Settings", "settings", "Setting", "setting" };
+        //the main menu in a string
+        string mess = "____________________|Help|____________________" + "\r\n" +
+                      "                     |  |                     " + "\r\n" +
+                      "                      ||                      " + "\r\n" +
+                     @"          Get to setting say ""Set""          " + "\r\n" +
+                     @"          Get to Start say ""Start""          " + "\r\n" +
+                     @"          Get to ________ say ""__""          " + "\r\n" +
+                     @"          Get to ________ say ""__""          " + "\r\n" +
+                     @"          Get to ________ say ""__""          " + "\r\n" +
+                      "                                              " + "\r\n" +
+                      "                                              ";
+        public void SetMainMeun(string Text)
+        {
+            mess = Text;
+        }
         /// <summary>
         /// this is the main menu where the player can go settings
         /// </summary>
-        public void start()
+        public virtual void start(string test)
         {
             //main menu
             if (Dialog_DataBase.PlayerInputOptions(Console.ReadLine(), settingCom))
             {
                 if (Dialog_DataBase.PlayerInputOptions(Console.ReadLine(), "help"))
                 {
-                    //the main menu in a string
-                    string mess = "____________________|Help|____________________" + "\r\n" +
-                                  "                     |  |                     " + "\r\n" +
-                                  "                      ||                      " + "\r\n" +
-                                 @"          Get to setting say ""Set""          " + "\r\n" +
-                                 @"          Get to Start say ""Start""          " + "\r\n" +
-                                 @"          Get to ________ say ""__""          " + "\r\n" +
-                                 @"          Get to ________ say ""__""          " + "\r\n" +
-                                 @"          Get to ________ say ""__""          " + "\r\n" +
-                                  "                                              " + "\r\n" +
-                                  "                                              ";
                     //writes the main menu to the console
                     Dialog_DataBase.NpcsDiaLog("", ' ', mess);
                     //player input
-                    if(Dialog_DataBase.PlayerInputOptionsWin("=>:", "Set"))
+                    if (Dialog_DataBase.PlayerInputOptionsWin("=>:", "Set"))
                     {
                         //go to the settings
                         GetSet();
                     }
-                    if(Dialog_DataBase.PlayerInputOptionsWin("=>:", "Start"))
-                    {
-
-                    }
-
                 }
             }
         }
-        public void update()
+        public virtual void update()
         {
             //input
 
-            if(Dialog_DataBase.PlayerInputOptions(Console.ReadLine(),"hello"))
+            if (Dialog_DataBase.PlayerInputOptions(Console.ReadLine(), "hello"))
             {
                 Dialog_DataBase.NpcsDiaLog("system", ':', "ok");
             }
@@ -115,11 +122,11 @@ namespace GameEngine
             {
 
             }
-            if(Dialog_DataBase.PlayerInputOptionsWin(StartUserWrite,S_Exit))
+            if (Dialog_DataBase.PlayerInputOptionsWin(StartUserWrite, S_Exit))
             {
                 exitSetMenu = true;
             }
-            if(exitSetMenu == false)
+            if (exitSetMenu == false)
                 GetSet();
         }
     }
