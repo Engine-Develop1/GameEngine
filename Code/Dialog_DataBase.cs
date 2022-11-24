@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace GameEngine.NpcDialog
 {
     public struct Dialog_DataBase
@@ -11,6 +10,18 @@ namespace GameEngine.NpcDialog
                 return true;
             else
                 return false;
+        }
+        public static bool PlayerInputOptions(string user, string[] input)
+        {
+            bool re = true;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (user == input[i])
+                    re = true;
+                else
+                    re = false;
+            }
+            return re;
         }
         public static bool PlayerInputOptionsWin(string inputFelt, string input)
         {
@@ -34,18 +45,6 @@ namespace GameEngine.NpcDialog
             }
             return re;
         }
-        public static bool PlayerInputOptions(string user, string[] input)
-        {
-            bool re = true;
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (user == input[i])
-                    re = true;
-                else
-                    re = false;
-            }
-            return re;
-        }
         public static void NpcsDiaLog(string name, char format, string Mess)
         {
             Console.WriteLine(name + format + Mess);
@@ -58,6 +57,10 @@ namespace GameEngine.NpcDialog
         public static void NotItemCon()
         {
             Console.WriteLine("you do not have enough of this");
+        }
+        public static string GetUserInput()
+        {
+            return Console.ReadLine();
         }
     }
 }

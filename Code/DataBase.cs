@@ -37,6 +37,13 @@ namespace GameEngine.DataBase
             stores[DataRow - 1].NameDataBase[index[DataRow - 1]] = name;
             stores[DataRow - 1].valueDataBase[index[DataRow - 1]] = val;
         }
+        /// <summary>
+        /// this file will be a .GEDB(game engine data base) file in appdata on win
+        /// </summary>
+        public void WriteFromMemToFile()
+        {
+
+        }
         public object ReadData(int database, int index)
         {
             return stores[database - 1].valueDataBase[index - 1].ToString();
